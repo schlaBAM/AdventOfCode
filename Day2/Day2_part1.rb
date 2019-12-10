@@ -48,7 +48,7 @@ def get_code_value(input)
     position += 4
   end
 
-  input[0]
+  input
 
 end
 
@@ -57,4 +57,4 @@ file = File.read("input2.txt").split(",").map(&:to_i)
 file[1] = 12
 file[2] = 2
 
-puts get_code_value(file) # returns 3562624
+puts get_code_value(file)[0] # returns 3562624
