@@ -15,7 +15,7 @@ wires = File.read("input3.txt").split(" ")
 wire1 = wires[0].split(",")
 wire2 = wires[1].split(",")
 
-def check_max(x1, y1, dist)
+def check_min(x1, y1, dist)
   if x1 + y1 < dist
     dist = x1 + y1
   end
@@ -57,17 +57,16 @@ def generate_array(wire)
   results.uniq
 end
 
-
 locations1 = generate_array(wire1).map {|x| [x,true]}.to_h
 locations2 = generate_array(wire2).map {|x| [x,true]}.to_h
 
 intersections = locations1.delete_if{ |x| !locations2.has_key?(x)}
 
 intersections.keys.each do |x,y|
-  closest_distance = check_max(x.abs,y.abs,closest_distance)
+  closest_distance = check_min(x.abs, y.abs, closest_distance)
 end
 
-puts closest_distance
+puts "Closest distance to central port: #{closest_distance}"
 
 
 
